@@ -27,5 +27,5 @@ function fib(n) {
   arr_fib.push(fib(n - 1) + n - 1 + n - 2)
   return arr_fib
 }
-
+// todo: refactor! it doesn't work!
 console.log(fib(3))
