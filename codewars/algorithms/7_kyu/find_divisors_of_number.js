@@ -17,4 +17,4 @@ function divisors(integer) {
     return `${integer} is prime`
   else
     return divisors.sort(function(a, b){return a-b})
-};
+}
