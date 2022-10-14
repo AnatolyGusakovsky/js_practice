@@ -42,41 +42,33 @@
 
 function towerBuilder(nFloors, nBlockSz) {
   let spaces = ' '.repeat(nBlockSz[0]); // works properly
-  console.log('spaces_start'+spaces+'spaces_end')
   let string = ''
   const num_dig_first_floor = get_number_of_digits_on_first_floor(nFloors, nBlockSz[0])
   let res_arr = [];
   for (let j = 0; j < num_dig_first_floor; j++) {
     string += '*'
   }
-  res_arr.push(string)
+  for (let i = 0; i < nBlockSz[1]; i++)
+    res_arr.push(string)
 
-  for (let i = 0; i < nFloors-1; i++) {
+  for (let i = 0; i < nFloors - 1; i++) {
     let string_chars = string.split('')
-    string_chars.splice(i, nBlockSz[0], spaces)
-    string_chars.splice(string_chars.length - 1 - i, nBlockSz[0], spaces)
-
-
+    string_chars.splice(i * nBlockSz[0], nBlockSz[0], spaces)
+    string_chars.reverse()
+    string_chars.splice(i * nBlockSz[0], nBlockSz[0], spaces)
     string = string_chars.join('')
-    for(let i = 0; i < nBlockSz[1]; i++)
-    res_arr.push(string);
+    for (let i = 0; i < nBlockSz[1]; i++)
+      res_arr.push(string);
   }
   res_arr.reverse()
-  console.log(res_arr)
   return res_arr
 
 
-  // works properly
   function get_number_of_digits_on_first_floor(floors, block_wide) {
-    let digits = 2;
+    let digits = block_wide;
     for (let i = 1; i < floors; i++)
-      digits += block_wide*2
+      digits += block_wide * 2
     return digits
   }
 }
 
-towerBuilder(3, [4, 2])
-
-// console.log('get_number_of_digits_on_first_floor: ' + get_number_of_digits_on_first_floor(6, 2))
-
-// todo: in progress
