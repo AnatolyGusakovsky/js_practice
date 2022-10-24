@@ -19,7 +19,7 @@ function permutations(string) {
   for(let i = 0; i < string_digits_arr.length; i++){
     for(let j = 0; j < string_digits_arr.length-1; j++){
 
-
+//thinking on algorithm on paper
     }
   }
 
