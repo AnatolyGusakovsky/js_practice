@@ -18,8 +18,7 @@ function permutations(string) {
   let count_of_combinations = get_factorial(string.split('').length)
   for(let i = 0; i < string_digits_arr.length; i++){
     for(let j = 0; j < string_digits_arr.length-1; j++){
-      // let combination =
-let temp = string_digits_arr[j]
+
 
     }
   }
