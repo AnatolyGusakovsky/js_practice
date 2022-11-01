@@ -11,30 +11,34 @@ In this kata you have to create all permutations of a non empty input string and
 * Your function should return ['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa']
 The order of the permutations doesn't matter.*/
 
-// algorithm has been created.
-//todo: 1. decompose on steps, 2. implement
 function permutations(string) {
-  let result_arr, string_digits_arr;
-  string_digits_arr = string.split('');
-  let count_of_combinations = get_factorial(string.split('').length)
-  for(let i = 0; i < string_digits_arr.length; i++){
-    for(let j = 0; j < string_digits_arr.length-1; j++){
-      // let combination =
-let temp = string_digits_arr[j]
+  let blocks = [];
+  let chars = string.split('');
 
-    }
+  for (let i = 0; i < string.length; i++) {
+
+    let first_char = chars.shift()
+    chars.push(first_char)
+    blocks.push(chars.join(''))
   }
+  let last = blocks.pop()
+  blocks.unshift(last)
+  // blocks founded
+  blocks.forEach((block) => {
 
+  })
 
 
   return [];
 }
 
-function get_factorial(n){
-  if(n===1)
+function get_factorial(n) {
+  if (n === 1)
     return 1
-  return n*get_factorial(n-1)
+  return n * get_factorial(n - 1)
 }
+
+permutations('abcdefgh')
 
 // Thinking on algorithm:
 // 1. Count of symbols in given string = number of calculation blocks
