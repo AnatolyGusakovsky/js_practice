@@ -16,6 +16,18 @@ race(80, 91, 37)   => [3, 21, 49]
 */
 
 function race(v1, v2, g) {
-  let seconds = g/(v2-v1)
-  // todo: convert seconds to hour, minutes, etc
+  if (v1 < 0 || v2 < 0 || g < 0 || v2 < v1)
+    return null
+  let res_arr = []
+  let total_time_in_hours = g / (v2 - v1)
+  let total_in_seconds = Math.floor(3600 * total_time_in_hours)
+
+  let hours = Math.floor(total_time_in_hours)
+  let minutes = Math.floor((total_in_seconds - 3600 * hours) / 60)
+  let seconds = Math.floor((total_in_seconds - 3600 * hours - 60 * minutes))
+
+  res_arr.push(hours, minutes, seconds)
+  return res_arr
 }
+
+console.log(race(80, 91, 37))
