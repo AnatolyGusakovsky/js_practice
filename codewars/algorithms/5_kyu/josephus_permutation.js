@@ -26,4 +26,17 @@ For more info, browse the Josephus Permutation page on wikipedia; related kata: 
 
 */
 
-//todo: resolve it
+function josephus(items, k) {
+  let result_arr = [];
+  let temp = k;
+  for (let i = 1; i <= items.length; i++) {
+    result_arr.push(items.splice(temp-1, 1)[0])
+    if(temp+k > items.length-1)
+      temp += k - items.length
+    else
+      temp += k-1
+  }
+  return result_arr;
+}
+
+console.log(josephus([1,2,3,4,5,6,7],3))
