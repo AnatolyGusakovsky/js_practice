@@ -27,12 +27,17 @@ For more info, browse the Josephus Permutation page on wikipedia; related kata: 
 */
 
 function josephus(items, k) {
+  let items_length = items.length;
   let result_arr = [];
-  let temp = k;
-  for (let i = 1; i <= items.length; i++) {
-    result_arr.push(items.splice(temp-1, 1)[0])
-    if(temp+k > items.length-1)
-      temp += k - items.length
+  let temp = k-1;
+  for (let i = 0; i < items_length; i++) {
+    if (items.length < k){
+
+    }
+    result_arr.push(items.splice(temp, 1)[0])
+    if(temp+k > items.length){
+      temp += k - items.length-1
+    }
     else
       temp += k-1
   }
