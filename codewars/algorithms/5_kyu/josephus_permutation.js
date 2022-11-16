@@ -23,20 +23,26 @@ So our final result is:
 
   josephus([1,2,3,4,5,6,7],3)==[3,6,2,7,5,1,4]
 For more info, browse the Josephus Permutation page on wikipedia; related kata: Josephus Survivor.
-
 */
 
 function josephus(items, k) {
+  let items_length = items.length;
   let result_arr = [];
-  let temp = k;
-  for (let i = 1; i <= items.length; i++) {
-    result_arr.push(items.splice(temp-1, 1)[0])
-    if(temp+k > items.length-1)
-      temp += k - items.length
-    else
-      temp += k-1
+  let push_this_index = k - 1;
+  for (let i = 0; i < items_length; i++) {
+    if (items.length < k) {
+      while (items.length > 0 && push_this_index >= items.length) {
+        push_this_index = push_this_index - items.length;
+      }
+    }
+    result_arr.push(items.splice(push_this_index, 1)[0])
+    if (push_this_index + k > items.length) {
+      push_this_index += k - items.length - 1
+    } else
+      push_this_index += k - 1
   }
   return result_arr;
 }
 
-console.log(josephus([1,2,3,4,5,6,7],3))
+console.log(josephus([1, 2, 3, 4, 5, 6, 7], 3))
+console.log(josephus([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1))
