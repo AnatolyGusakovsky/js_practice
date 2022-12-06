@@ -6,5 +6,20 @@
 
 
 function toCamelCase(str) {
-
+  let str_arr = str.split('')
+  let result_str = ''
+  let upeerCaseFlag = false;
+  str_arr.forEach((elem, index) => {
+    if (elem === '_' || elem === '-') {
+      upeerCaseFlag = true
+    } else {
+      if (upeerCaseFlag) {
+        result_str += elem.toUpperCase()
+        upeerCaseFlag = false
+      } else result_str += elem
+    }
+  })
+  return result_str
 }
+
+console.log(toCamelCase("the_stealth_warrior"))
