@@ -25,23 +25,40 @@ function countSmileys(arr) {
   let smile_counter = 0;
   ext: for (let i = 0; i < arr.length; i++) {
     let symbols = arr[i].split('')
-    /* symbols.forEach((elem, index) => */
-    for (let j = 0; j < symbols.length; j++) {
-      let elem = symbols[j]
-      if (i === 0) {
-        if (elem !== ":" || elem !== ';')
-          continue ext;
+    if (symbols.length === 2) {
+      for (let j = 0; j < symbols.length; j++) {
+        let elem = symbols[j]
+        if (j === 0)
+          if (elem === ":" || elem === ';') {
+            continue
+          } else continue ext;
+        if (j === 1)
+          if (elem === ')' || elem === 'D') {
+            smile_counter++
+          }
       }
-      if (i === 1) {
-        if (elem !== '-' || elem !== '~' || elem !== ')' || elem !== 'D')
-          continue ext;
-        if(elem === ')' || elem === 'D' && i < symbols.length-1)
-          continue ext;
+    }
+    if (symbols.length === 3) {
+      for (let k = 0; k < symbols.length; k++) {
+        let elem = symbols[k]
+        if (k === 0)
+          if (elem === ":" || elem === ';') {
+            continue
+          } else continue ext;
+        if (k === 1)
+          if (elem === '-' || elem === '~') {
+            continue
+          } else continue ext
+        if (k === 2)
+          if (elem === ')' || elem === 'D') {
+            smile_counter++
+          } else continue ext
       }
-      smile_counter++
     }
   }
   return smile_counter
 }
 
 console.log(countSmileys([':)', ';(', ';}', ':-D']))
+console.log(countSmileys([';D', ':-(', ':-)', ';~)']))
+console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']))
