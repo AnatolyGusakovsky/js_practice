@@ -1,5 +1,8 @@
 /*
-You are going to be given an array of integers. Your job is to take that array and find an index N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no index that would make this happen, return -1.
+You are going to be given an array of integers.
+Your job is to take that array and find an index N where
+the sum of the integers to the left of N is equal to the sum of the integers to the right of N.
+If there is no index that would make this happen, return -1.
 
 For example:
 
@@ -23,12 +26,33 @@ Input:
   An integer array of length 0 < arr < 1000. The numbers in the array can be any integer positive or negative.
 
   Output:
-The lowest index N where the side to the left of N is equal to the side to the right of N. If you do not find an index that fits these rules, then you will return -1.
+The lowest index N where the side to the left of N is equal to the side to the right of N.
+If you do not find an index that fits these rules, then you will return -1.
 
 Note:
   If you are given an array with multiple answers, return the lowest correct index.*/
 
-function findEvenIndex(arr)
-{
-  //Code goes here!
+function findEvenIndex(arr) {
+  let result;
+  let sum_left = 0;
+  for (let i = -1; i < arr.length; i++) {
+    if (i === -1) {
+    } else
+      sum_left += arr[i]
+    let sum_right = 0;
+    for (let j = arr.length - 1; j > i + 1; j--) {
+      sum_right += arr[j];
+    }
+    if (sum_left === sum_right) {
+      result = i + 1
+      break;
+    }
+  }
+  if (result === undefined)
+    return -1
+  return result
 }
+
+console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1]))
+console.log(findEvenIndex([1, 100, 50, -51, 1, 1]))
+console.log(findEvenIndex([0,0,0,0,0]))
