@@ -22,12 +22,29 @@ L	50
 C	100
 M	1000
 D	500*/
+
 // todo:
 class RomanNumerals {
-  static toRoman(number){
+  roman_numerals = new Map([['I', 1], ['IV', 4], ['V', 5], ['X', 10], ['L', 50], ['C', 100], ['D', 500], ['M', 1000]])
 
+  static toRoman(number) {
+    let roman_number = '';
+    if (number > 4000 || number < 1)
+      return 'given number is out of the range'
+    else {
+      let num;
+     if(number/1000 >= 1){
+       number =
+       num = number%1000
+       for(let i = 0; i < num; i++){
+         roman_number += 'M'
+       }
+     }
+
+    }
   }
-  static fromRoman(romanString){
+
+  static fromRoman(romanString) {
 
   }
 }
